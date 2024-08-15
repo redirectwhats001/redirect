@@ -35,7 +35,7 @@ client.connect(async function (err) {
     if (err) throw err;
     console.log("Connected!");
 
-    // REDIRECT
+        // REDIRECT
     app.get('/visit', async (req, res) => {
         const { type } = req.query;
         const { rows } = await client.query(type == 'random' ? random_order : linear_order, [qtd]);
@@ -60,23 +60,23 @@ client.connect(async function (err) {
         // Generate HTML table with the formatted data
         let tableRows = rows.map(row => `
             <tr>
-                <td style="text-align:center;">${row.id}</td>
-                <td style="text-align:center;"><a href="${row.link}" target="_blank" style="text-decoration:none; color:black;">${row.link}</a></td>
-                <td style="text-align:center;"><b style="color:red;">${row.clicks}</b></td>
+                <td style="text-align:center; font-size: 125%;">${row.id}</td>
+                <td style="text-align:center; font-size: 125%;"><a href="${row.link}" target="_blank" style="text-decoration:none; color:black;">${row.link}</a></td>
+                <td style="text-align:center; font-size: 125%;"><b style="color:red;">${row.clicks}</b></td>
             </tr>
         `).join('');
 
         res.send(`
             <html>
             <head><title>Links</title></head>
-            <body>
+            <body style="font-size: 125%; margin-top: 1%;">
                 <h1 style="text-align:center;">Links and Clicks</h1>
                 <table border="1" style="border-collapse: collapse; width: 80%; margin: auto;">
                     <thead>
                         <tr>
-                            <th style="padding: 10px; border: 1px solid black; text-align:center; background-color: #4682b4;">ID</th>
-                            <th style="padding: 10px; border: 1px solid black; text-align:center; background-color: #4682b4;">Links</th>
-                            <th style="padding: 10px; border: 1px solid black; text-align:center; background-color: #4682b4;">Clicks</th>
+                            <th style="padding: 10px; border: 1px solid black; text-align:center; background-color: #4682b4; font-size: 125%;">ID</th>
+                            <th style="padding: 10px; border: 1px solid black; text-align:center; background-color: #4682b4; font-size: 125%;">Links</th>
+                            <th style="padding: 10px; border: 1px solid black; text-align:center; background-color: #4682b4; font-size: 125%;">Clicks</th>
                         </tr>
                     </thead>
                     <tbody>
